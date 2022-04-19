@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.smalldai.smalldaispringboot.mapper.system.SysMenuMapper">
+    <resultMap id="listMenusMap" type="top.smalldai.smalldaispringboot.to.MenuTO">
+        <id column="m_id" property="mId"></id>
+        <result column="m_name_en" property="nameEn"></result>
+        <result column="m_name_zh" property="nameZh"></result>
+        <result column="m_url" property="url"></result>
+        <result column="m_parent_id" property="parentId"></result>
+        <result column="m_icon_name" property="iconName"></result>
+        <result column="m_icon_url" property="iconUrl"></result>
+    </resultMap>
+
+    <select id="listMenus" resultMap="listMenusMap">
+        select m_id, m_name_en, m_name_zh, m_url, m_parent_id, m_icon_name, m_icon_url
+        from t_sys_menu
+        where is_deleted = 1
+    </select>
+    <select id="listMenuTOById" resultMap="listMenusMap">
+        select m_id, m_name_en, m_name_zh, m_url, m_parent_id, m_icon_name, m_icon_url
+        from t_sys_menu
+        where is_deleted = 1 and m_id = #{mId}
+    </select>
+
+</mapper>

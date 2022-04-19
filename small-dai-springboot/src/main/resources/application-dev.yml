@@ -1,0 +1,58 @@
+spring:
+  datasource:
+    # 数据库驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 阿里巴巴的druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 数据库连接语句
+    url: jdbc:mysql://localhost:3306/small_dai_springboot?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    # 用户名
+    username: root
+    # 密码
+    password: 123456
+    druid:
+      initial-size: 10
+      max-active: 150
+      min-idle: 10
+      max-wait: 5000
+      pool-prepared-statements: false
+      validation-query: SELECT 1
+      validation-query-timeout: 500
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      filters: stat,wall
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    port: 6379
+    host: localhost
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    username: a66573578-6@qq.com
+    password: syqcghfsubucbfgb
+    port: 587
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*Mapper.xml
+  # 返回实体类包
+  type-aliases-package: top.smalldai.smalldaispringboot.entity
+  configuration:
+    # 使用系统默认ibatis输出日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+smalldai:
+  title: 小呆代码生成平台-开发环境
+  description: 通过小呆生成平台生成个性化配置的系统
+  version: v1-dev
+  mysql:
+    username: root
+    password: 123456
+    host: 127.0.0.1
+    mysqldump: /Users/xingyuchen/Downloads/small-dai-springboot/
+
+

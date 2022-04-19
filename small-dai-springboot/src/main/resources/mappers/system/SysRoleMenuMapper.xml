@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.smalldai.smalldaispringboot.mapper.system.SysRoleMenuMapper">
+    <resultMap id="listMenuTOByrIdMap" type="top.smalldai.smalldaispringboot.to.MenuTO">
+        <id column="m_id" property="mId"></id>
+        <result column="m_name_en" property="nameEn"></result>
+        <result column="m_name_zh" property="nameZh"></result>
+        <result column="m_url" property="url"></result>
+        <result column="m_parent_id" property="parentId"></result>
+        <result column="m_icon_name" property="iconName"></result>
+        <result column="m_icon_url" property="iconUrl"></result>
+    </resultMap>
+    <select id="listMenuTOByrId" resultMap="listMenuTOByrIdMap">
+        select m.m_id, m.m_name_en, m.m_name_zh, m.m_url, m.m_parent_id, m.m_icon_name, m.m_icon_url
+        from t_sys_role_menu as rm, t_sys_menu as m
+        where rm.is_deleted = 1 and m.is_deleted = 1 and rm.r_id = #{rId} and rm.m_id = m.m_id
+    </select>
+</mapper>

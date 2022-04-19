@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.smalldai.smalldaispringboot.mapper.system.SysRolePermissionMapper">
+    <resultMap id="listPermissionByrIdMap" type="top.smalldai.smalldaispringboot.to.PermissionTO">
+        <id column="p_id" property="pId"></id>
+        <result column="p_name_en" property="nameEn"></result>
+        <result column="p_name_zh" property="nameZh"></result>
+        <result column="p_url" property="url"></result>
+    </resultMap>
+    <select id="listPermissionByrId" resultMap="listPermissionByrIdMap">
+        select p.p_id, p.p_name_zh, p.p_name_en, p.p_url
+        from t_sys_role_permission as rp, t_sys_permission as p
+        where rp.r_id = #{rId} and rp.p_id = p.p_id
+    </select>
+</mapper>

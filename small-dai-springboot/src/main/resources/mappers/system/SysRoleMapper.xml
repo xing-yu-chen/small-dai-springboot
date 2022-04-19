@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.smalldai.smalldaispringboot.mapper.system.SysRoleMapper">
+    <resultMap id="getRoleTOByIdMap" type="top.smalldai.smalldaispringboot.to.RoleTO">
+        <id column="r_id" property="rId"></id>
+        <result column="r_name_en" property="nameEn"></result>
+        <result column="r_name_zh" property="nameZh"></result>
+    </resultMap>
+    <select id="getRoleTOById" resultMap="getRoleTOByIdMap">
+        select r_id, r_name_en, r_name_zh
+        from t_sys_role
+        where r_id = #{rId} and is_deleted = 1
+    </select>
+</mapper>
